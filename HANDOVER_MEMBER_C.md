@@ -135,4 +135,6 @@ class MedicalModelTool:
      - **管道 1**：纯 RAG (原生 7B 模型 + 检索)
      - **管道 2**：纯 SFT (成员 B 微调后的 1.5B 模型)
      - **管道 3**：混合 Agent (微调 1.5B + RAG 检索)
-   - 测量 **Faithfulness (忠实度)** 与 **Answer Relevancy (相关性)**，画出雷达图完成期末主报告撰写。
+   - 测量 **Faithfulness (忠实度)** 与 **Answer Relevancy (相关性)**。
+   - 尽量给出丰富的评测数据，对比两种方法的优劣点。
+3. **尝试在网页端构建出简易的使用demo进行演示**
