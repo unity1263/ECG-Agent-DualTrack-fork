@@ -1,0 +1,12 @@
+# GitHub 100MB 限制文件排除项
+*.faiss
+*.npy
+memberB_files/models/deepseek-1.5b-medical-merged/
+memberB_files/base_models/
+
+# Python & 临时日志文件
+__pycache__/
+*.py[cod]
+*$py.class
+.cache/
+*.log

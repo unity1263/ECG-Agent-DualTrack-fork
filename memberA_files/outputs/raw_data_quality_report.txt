@@ -1,0 +1,38 @@
+================================================================================
+          ECG-Expert-QA 原始脏数据体检报告（清洗前）
+================================================================================
+
+一、粗颗粒语料总体概览
+----------------------------------------
+未清洗前抽取的QA总对数: 79877
+检测出的绝对重复问答对数: 654 条
+
+二、文本乱码与特殊格式扫描
+----------------------------------------
+空问题数量: 1086 条
+空回答数量: 1 条 (包含未对齐造成的格式丢失)
+包含明显 HTML 标签的回答数: 1 条
+包含网络 URL 链接的问题数: 0 条
+包含不规范连续大空格的回答数: 3907 条
+
+三、原始文本特征分布
+----------------------------------------
+原始问题 - 平均长度: 77.1 字符, 最大长度: 419 字符
+原始回答 - 平均长度: 692.4 字符, 最大长度: 16960 字符
+
+四、各原始子数据集占比分布
+----------------------------------------
+  【Medical inquiry, multiple rounds of dialogue between doctors and patients】: 28308 条
+  【Cross modal diagnosis (ECG Text corresponding diagnosis)】: 20032 条
+  【Long text diagnosis】: 8789 条
+  【Memory correction】: 7905 条
+  【Generate risk assessment】: 2931 条
+  【Medical entity extraction】: 2621 条
+  【Cardiology Knowledge (Basic Knowledge QA)】: 2592 条
+  【ECG Knowledge (Basic QA)】: 2247 条
+  【Complex diagnosis (analysis of difficult diseases)】: 1931 条
+  【Patients right to know】: 1357 条
+  【Patient prognosis (prognostic analysis)】: 1164 条
+
+================================================================================
+初诊结论：数据集中存在显著的语料格式重复以及HTML/连续空格杂质，强烈建议执行物理清洗去重。

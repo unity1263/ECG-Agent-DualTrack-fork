@@ -1,0 +1,5 @@
+NVIDIA RTX 4060 (8GB VRAM) Fine-Tuning Profile:
+---------------------------------------------
+Base model size (1.5B Qlora loaded): 2.55 GB
+Peak VRAM during training:           5.59 GB
+Memory overhead of activations & grad: 3.04 GB

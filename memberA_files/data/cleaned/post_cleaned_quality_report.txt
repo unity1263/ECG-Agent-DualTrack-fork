@@ -1,0 +1,42 @@
+================================================================================
+       ECG-Expert-QA 黄金级数据集质量分析报告（清洗后）
+================================================================================
+
+【清洗成效总揽】
+原始粗颗粒对总数: 79877
+最终过滤保留对数: 78136
+整体过滤率: 2.18%
+
+【过滤详情】
+  - 空值过滤: 1086 条
+  - 短问题过滤: 2 条
+  - 短回答过滤: 0 条
+  - 长回答截断: 1009 条
+  - 无效内容过滤: 0 条
+  - 重复去重: 653 条
+
+【清洗后核心长度指标】
+平均问题长度: 77.9 字符
+平均回答长度: 681.8 字符
+中位数问题长度: 68.0 字符
+中位数回答长度: 385.0 字符
+最小问题长度: 12 字符
+最大问题长度: 418 字符
+最小回答长度: 21 字符
+最大回答长度: 5000 字符
+
+【各子数据集最终语料分布】
+  - Medical inquiry, multiple rounds of dialogue between doctors and patients: 27687 条
+  - Cross modal diagnosis (ECG Text corresponding diagnosis): 19039 条
+  - Long text diagnosis: 8788 条
+  - Memory correction: 7809 条
+  - Generate risk assessment: 2931 条
+  - Medical entity extraction: 2621 条
+  - Cardiology Knowledge (Basic Knowledge QA): 2592 条
+  - ECG Knowledge (Basic QA): 2247 条
+  - Complex diagnosis (analysis of difficult diseases): 1931 条
+  - Patients right to know: 1327 条
+  - Patient prognosis (prognostic analysis): 1164 条
+
+================================================================================
+验证结论：所有HTML、URL、特殊字符及重复项已清除。当前语料数据分布健康，可随时喂给RAG索引。
