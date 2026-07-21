@@ -1,0 +1,482 @@
+[
+  {
+    "question": "What are the potential long-term complications and prognosis for Patient 104182 given the observed cardiac abnormalities",
+    "ground_truth": "The potential long-term complications and prognosis for Patient 104182 include: Stroke: The most significant risk associated with atrial fibrillation, which can be mitigated with appropriate anticoagulation therapy. Heart Failure: The presence of ventricular hypertrophy and possible myocardial infarction increases the risk of developing heart failure, particularly if left ventricular function is compromised. Cardiac Arrhythmias: Continued atrial fibrillation or the development of other arrhythmias, which could lead to hemodynamic instability and increased morbidity. Progression of Ventricular Hypertrophy: If left untreated, the hypertrophy could progress, leading to further cardiac dysfunction and reduced quality of life. Ischemic Events: The presence of ST-T changes suggests a risk of ischemic events, which could be exacerbated by underlying coronary artery disease.The prognosis is generally favorable with appropriate management, including rate and rhythm control, anticoagulation, and lifestyle modifications. However, close monitoring and timely intervention are essential to prevent complications and improve long-term outcomes",
+    "domain": "complex_diagnosis",
+    "dataset": "Long text diagnosis",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, The potential long-term complications and prognosis for Patient 104182 include: Stroke: The most significant risk associated with atrial fibrillation, which can be mitigated with appropriate anticoagu. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.575,
+      "answer_relevancy": 0.9667,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "The potential long-term complications and prognosis for Patient 104182 include: Stroke: The most significant risk associated with atrial fibrillation, which can be mitigated with appropriate anticoagulation therapy. Heart Failure: The presence of ven. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.93,
+      "answer_relevancy": 0.9667,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: The potential long-term complications and prognosis for Patient 104182 include: Stroke: The most significant risk associated with atrial fibrillation, which can be mitigated with appropriate anticoagulation therapy. Hear. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.94,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What is the risk assessment for patient 10929752",
+    "ground_truth": "Risk Assessment Report for Patient 10929752 Patient Information:- Patient ID: 10929752- ECG Dates: March 7, 2140 to April 3, 2140 ECG Examination Summary:1. March 7, 2140 (ID: 40376349): - Findings: Sinus rhythm with borderline 1st degree A-V block, left axis deviation, IV conduction defect, possible acute anteroseptal infarct. - Technical Details: - P starting at 40ms, P ending at 158ms - QRS starting at 252ms, QRS ending at 436ms - T ending at 648ms - P axis at 52, QRS axis at -47, T axis at 1202. March 29, 2140 (ID: 49073207): - Findings: Sinus tachycardia with borderline 1st degree A-V block, possible biatrial enlargement, left axis deviation, IV conduction defect, possible lateral infarct. - Technical Details: - P starting at 40ms, P ending at 148ms - QRS starting at 246ms, QRS ending at 426ms - T ending at 630ms - P axis at 75, QRS axis at -41, T axis at 1203. April 1, 2140 (ID: 48154549): - Findings: Sinus rhythm with 1st degree A-V block, possible left atrial abnormality, left axis deviation, IV conduction defect, lateral infarct. - Technical Details: - P starting at 40ms, P ending at 184ms - QRS starting at 280ms, QRS ending at 452ms - T ending at 674ms - P axis at 64, QRS axis at -47, T axis at 1234. April 1, 2140 (ID: 49629462): - Findings: Sinus rhythm with borderline 1st degree A-V block, left axis deviation, IV conduction defect, possible lateral infarct, possible anterior infarct. - Technical Details: - P starting at 40ms, P ending at 154ms - QRS starting at 246ms, QRS ending at 426ms - T ending at 650ms - P axis at 75, QRS axis at -47, T axis at 1125. April 3, 2140 (ID: 45213911): - Findings: Sinus tachycardia, possible biatrial enlargement, left axis deviation, IV conduction defect, possible lateral infarct. - Technical Details: - P starting at 40ms, P ending at 136ms - QRS starting at 236ms, QRS ending at 424ms - T ending at 618ms - P axis at 85, QRS axis at -41, T axis at 121 Risk Factor Analysis:1. Cardiac Abnormalities: - Sinus Rhythm with 1st Degree A-V Block: Persistent 1st degree A-V block indicates potential conduction system issues, which can predispose to higher-degree blocks. - Left Axis Deviation: Suggests possible left ventricular hypertrophy or left anterior fascicular block. - IV Conduction Defect: Indicates intraventricular conduction delay, often seen in conditions like left bundle branch block. - Possible Infarcts: Acute anteroseptal infarct, lateral infarct, and possible anterior infarct suggest myocardial damage, which increases the risk of further cardiac events. - Biatrial Enlargement: Indicates potential structural changes in the atria, which can be associated with atrial fibrillation and other arrhythmias.2. Tachycardia: - Sinus tachycardia in two of the ECGs suggests possible underlying stress, infection, or cardiac pathology.3. Atrial Abnormalities: - Possible left atrial abnormality and biatrial enlargement suggest atrial remodeling, which can increase the risk of atrial fibrillation and thromboembolic events. Potential Risk Assessment:- High Risk of Cardiac Events: The presence of multiple ECG abnormalities, including conduction defects, axis deviations, and possible infarcts, indicates a high risk of cardiac events such as heart failure, myocardial infarction, and arrhythmias.- Thromboembolic Risk: The presence of biatrial enlargement and possible atrial abnormalities increases the risk of thromboembolic events, particularly stroke.- Progressive Cardiac Disease: The persistence of 1st degree A-V block and conduction defects suggests a progressive cardiac condition that may require intervention. Suggested Clinical Actions:1. Cardiac Imaging: - Echocardiogram: To assess left ventricular function, wall motion abnormalities, and confirm the presence of atrial enlargement. - Stress Echocardiogram: If clinically indicated, to evaluate for ischemia and assess the functional significance of the ECG abnormalities.2. Further Diagnostic Tests: - Coronary Angiography: If there is suspicion of significant coronary artery disease based on clinical presentation and ECG findings. - Holter Monitoring: To assess for arrhythmias, particularly atrial fibrillation, which could increase thromboembolic risk.3. Therapeutic Interventions: - Anticoagulation: If atrial fibrillation is confirmed or if there is significant atrial enlargement, anticoagulation therapy should be considered to reduce the risk of stroke. - Rate Control: If persistent tachycardia is present, medications to control heart rate may be necessary. - Cardiac Rehabilitation: To manage risk factors such as hypertension, diabetes, and lifestyle modifications.4. Follow-Up: - Regular follow-up with a cardiologist to monitor the progression of cardiac abnormalities and adjust treatment as necessary. Conclusion:Patient 10929752 exhibits multiple significant ECG abnormalities that indicate a high risk of progressive cardiac disease and potential thromboembolic events. Immediate clinical evaluation and appropriate therapeutic i",
+    "domain": "risk_assessment",
+    "dataset": "Generate risk assessment",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Risk Assessment Report for Patient 10929752 Patient Information:- Patient ID: 10929752- ECG Dates: March 7, 2140 to April 3, 2140 ECG Examination Summary:1. March 7, 2140 (ID: 40376349): - Findings: S. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.552,
+      "answer_relevancy": 1.0,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Risk Assessment Report for Patient 10929752 Patient Information:- Patient ID: 10929752- ECG Dates: March 7, 2140 to April 3, 2140 ECG Examination Summary:1. March 7, 2140 (ID: 40376349): - Findings: Sinus rhythm with borderline 1st degree A-V block, . Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.95,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Risk Assessment Report for Patient 10929752 Patient Information:- Patient ID: 10929752- ECG Dates: March 7, 2140 to April 3, 2140 ECG Examination Summary:1. March 7, 2140 (ID: 40376349): - Findings: Sinus rhythm with bor. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.5778,
+      "answer_relevancy": 1.0,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What is the risk assessment for patient 19242238",
+    "ground_truth": "Risk Assessment Report for Patient 19242238 Patient OverviewPatient 19242238 underwent seven electrocardiograms (ECGs) between June 5, 2183, and July 9, 2184, each showing various cardiac abnormalities. This report aims to provide a comprehensive risk assessment based on the ECG findings and to recommend appropriate clinical actions. ECG Interpretation and Abnormalities1. June 5, 2183 (ID: 46511399) - Findings: Possible ectopic atrial rhythm, left axis deviation, anteroseptal infarct - age undetermined, possible inferior infarct - age undetermined, lateral T wave changes due to myocardial ischemia, low QRS voltages in limb leads. - Technical Details: P onset at 40ms, P end at 150ms, QRS onset at 196ms, QRS end at 274ms, T end at 632ms, P axis at -56, QRS axis at -42, T axis at 124.2. June 7, 2183 (ID: 46254600) - Findings: Sinus arrhythmia, left axis deviation, anteroseptal infarct - age undetermined, lateral ST elevation - probable extension of infarct, inferiorlateral T changes due to myocardial ischemia, generalized low QRS voltages. - Technical Details: P onset at 40ms, P end at 156ms, QRS onset at 208ms, QRS end at 282ms, T end at 648ms, P axis at 50, QRS axis at -48, T axis at 97.3. June 8, 2183 (ID: 46757584) - Findings: Sinus rhythm, left axis deviation, anteroseptal infarct - age undetermined, lateral T wave changes due to myocardial ischemia, low QRS voltages in limb leads. - Technical Details: P onset at 40ms, P end at 150ms, QRS onset at 200ms, QRS end at 278ms, T end at 604ms, P axis at 72, QRS axis at -41, T axis at 90.4. July 11, 2183 (ID: 45461543) - Findings: Sinus rhythm, prolonged QT interval, possible anteroseptal infarct - age undetermined, inferiorlateral T wave changes, low QRS voltages in limb leads. - Technical Details: P onset at 40ms, P end at 170ms, QRS onset at 218ms, QRS end at 312ms, T end at 670ms, P axis at 41, QRS axis at -17, T axis at 141.5. July 12, 2183 (ID: 496470) - Findings: Sinus arrhythmia, prolonged QT interval, leftward axis, possible septal infarct - age undetermined, lateral T wave changes due to myocardial ischemia, low QRS voltages in precordial leads. - Technical Details: P onset at 40ms, P end at 174ms, QRS onset at 226ms, QRS end at 322ms, T end at 686ms, P axis at 41, QRS axis at -21, T axis at 134.6. June 30, 2184 (ID: 45240021) - Findings: Sinus tachycardia with PVCs, possible left atrial abnormality, possible septal infarct - age undetermined, lateral ST-T changes, low QRS voltages in limb leads. - Technical Details: P onset at 40ms, P end at 120ms, QRS onset at 158ms, QRS end at 238ms, T end at 490ms, P axis at 81, QRS axis at 73, T axis at 73.7. July 9, 2184 (ID: 46195474) - Findings: Acute ST elevation MI, sinus rhythm, short PR interval, rightward axis, incomplete LB, poor R wave progression - probable normal variant. - Technical Details: P onset at 40ms, P end at 106ms, QRS onset at 116ms, QRS end at 238ms, T end at 554ms, P axis at 90, QRS axis at 95, T axis at 82. Risk Factor Analysis1. Infarcts: Multiple ECG examinations show evidence of anteroseptal and inferior infarcts, with lateral T wave changes indicating ongoing myocardial ischemia.2. Axis Deviation: Persistent left axis deviation suggests underlying structural or electrical abnormalities.3. Low QRS Voltages: Generalized low QRS voltages in limb leads and precordial leads may indicate myocardial damage or pericardial effusion.4. Arrhythmias: Sinus arrhythmia, sinus tachycardia with PVCs, and possible ectopic atrial rhythm indicate irregularities in heart rhythm.5. Prolonged QT Interval: Prolonged QT intervals in multiple ECGs increase the risk of torsades de pointes, a life-threatening arrhythmia.6. Acute ST Elevation MI: The final ECG shows acute ST elevation MI, indicating a recent myocardial infarction. Potential Risk AssessmentGiven the multiple ECG findings, the patient is at high risk for:- Progressive Heart Disease: The presence of multiple infarcts and ongoing ischemia suggests a high likelihood of progressive heart disease.- Arrhythmias: The combination of prolonged QT interval, sinus arrhythmia, and PVCs increases the risk of serious arrhythmias, including torsades de pointes and ventricular fibrillation.- Heart Failure: The presence of low QRS voltages and evidence of myocardial damage increases the risk of heart failure.- Thromboembolic Events: The presence of atrial arrhythmias and infarcts increases the risk of thromboembolic events, including stroke. Suggested Clinical Actions1. Cardiac Imaging: - Echocardiography: To assess left ventricular function, wall motion abnormalities, and potential pericardial effusion. - Coronary Angiography: To evaluate the extent and severity of coronary artery disease.2. Electrophysiology Studies: - Holter Monitoring: To monitor for arrhythmias and assess the frequency and severity of PVCs. - Electrophysiology Study (EPS): If arrhythmias are frequent or life-threatening, an EPS may be warranted to identify the source and guide treatment.3. Ph",
+    "domain": "risk_assessment",
+    "dataset": "Generate risk assessment",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Risk Assessment Report for Patient 19242238 Patient OverviewPatient 19242238 underwent seven electrocardiograms (ECGs) between June 5, 2183, and July 9, 2184, each showing various cardiac abnormalitie. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.6367,
+      "answer_relevancy": 1.0,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Risk Assessment Report for Patient 19242238 Patient OverviewPatient 19242238 underwent seven electrocardiograms (ECGs) between June 5, 2183, and July 9, 2184, each showing various cardiac abnormalities. This report aims to provide a comprehensive ris. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.9659,
+      "answer_relevancy": 0.95,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Risk Assessment Report for Patient 19242238 Patient OverviewPatient 19242238 underwent seven electrocardiograms (ECGs) between June 5, 2183, and July 9, 2184, each showing various cardiac abnormalities. This report aims . Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.7019,
+      "answer_relevancy": 1.0,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "If my ECG indicates a potential issue, what preventive measures can I take",
+    "ground_truth": "The electrocardiogram shows sinus tachycardia with a heart rate exceeding normal limits, and nonspecific ST junctional depression indicating possible ischemia or strain. The ECG is borderline, which means there are some variations that are not definitively diagnostic but suggest potential abnormalities. This pattern is indicative of potential heart rhythm disorders such as sinus tachycardia",
+    "domain": "cross_modal_ecg",
+    "dataset": "Cross modal diagnosis (ECG Text corresponding diagnosis)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, The electrocardiogram shows sinus tachycardia with a heart rate exceeding normal limits, and nonspecific ST junctional depression indicating possible ischemia or strain. The ECG is borderline, which m. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.634,
+      "answer_relevancy": 0.7615,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "The electrocardiogram shows sinus tachycardia with a heart rate exceeding normal limits, and nonspecific ST junctional depression indicating possible ischemia or strain. The ECG is borderline, which means there are some variations that are not defini. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.9067,
+      "answer_relevancy": 0.7615,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: The electrocardiogram shows sinus tachycardia with a heart rate exceeding normal limits, and nonspecific ST junctional depression indicating possible ischemia or strain. The ECG is borderline, which means there are some . Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6764,
+      "answer_relevancy": 0.7615,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "Thank you, Doctor. Ill do that",
+    "ground_truth": "Alright, Mr. 11728039. Weve reviewed your ECG results and discussed your symptoms. Well monitor your condition closely and adjust your treatment plan as needed. Please keep track of your symptoms and seek immediate medical attention if anything worsens. Well see you at your next appointment. Take care, and have a good day",
+    "domain": "general",
+    "dataset": "Memory correction",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Alright, Mr. 11728039. Weve reviewed your ECG results and discussed your symptoms. Well monitor your condition closely and adjust your treatment plan as needed. Please keep track of your symptoms and . The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.5887,
+      "answer_relevancy": 0.7667,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Alright, Mr. 11728039. Weve reviewed your ECG results and discussed your symptoms. Well monitor your condition closely and adjust your treatment plan as needed. Please keep track of your symptoms and seek immediate medical attention if anything worse. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.8651,
+      "answer_relevancy": 0.7,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Alright, Mr. 11728039. Weve reviewed your ECG results and discussed your symptoms. Well monitor your condition closely and adjust your treatment plan as needed. Please keep track of your symptoms and seek immediate medic. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6109,
+      "answer_relevancy": 0.7,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What are the most common risk factors for developing coronary artery disease",
+    "ground_truth": "Common risk factors include hypertension, hyperlipidemia, smoking, diabetes mellitus, obesity, physical inactivity, and a family history of cardiovascular disease",
+    "domain": "cardiology_basic",
+    "dataset": "Cardiology Knowledge (Basic Knowledge QA)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Common risk factors include hypertension, hyperlipidemia, smoking, diabetes mellitus, obesity, physical inactivity, and a family history of cardiovascular disease. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.4696,
+      "answer_relevancy": 0.9,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Common risk factors include hypertension, hyperlipidemia, smoking, diabetes mellitus, obesity, physical inactivity, and a family history of cardiovascular disease. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.6968,
+      "answer_relevancy": 0.8667,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Common risk factors include hypertension, hyperlipidemia, smoking, diabetes mellitus, obesity, physical inactivity, and a family history of cardiovascular disease. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.4909,
+      "answer_relevancy": 0.7333,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What are the key cardiac abnormalities observed in Patient 14311522 over the course of their six ECGs",
+    "ground_truth": "The key cardiac abnormalities observed in Patient 14311522 include: Sinus Rhythm: Present in all ECGs, indicating normal sinus node function. Left Axis Deviation: Observed in all ECGs, suggesting possible left ventricular hypertrophy or conduction abnormalities. IV Conduction Defect: Present in multiple ECGs, indicating a delay or block in the intraventricular conduction system. Possible Anteroseptal Infarct: Indicated in several ECGs, suggesting a previous myocardial infarction in the anterior septal region. Right Bundle Branch Block (RB) with Left Anterior Fascicular Block: Observed in the third ECG, indicating a specific conduction defect involving both bundle branches.6. Borderline 1st Degree A-V Block: Noted in the final ECG, indicating a slight delay in atrioventricular conduction",
+    "domain": "complex_diagnosis",
+    "dataset": "Long text diagnosis",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, The key cardiac abnormalities observed in Patient 14311522 include: Sinus Rhythm: Present in all ECGs, indicating normal sinus node function. Left Axis Deviation: Observed in all ECGs, suggesting poss. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.5388,
+      "answer_relevancy": 0.925,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "The key cardiac abnormalities observed in Patient 14311522 include: Sinus Rhythm: Present in all ECGs, indicating normal sinus node function. Left Axis Deviation: Observed in all ECGs, suggesting possible left ventricular hypertrophy or conduction ab. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.7902,
+      "answer_relevancy": 0.925,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: The key cardiac abnormalities observed in Patient 14311522 include: Sinus Rhythm: Present in all ECGs, indicating normal sinus node function. Left Axis Deviation: Observed in all ECGs, suggesting possible left ventricula. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.5412,
+      "answer_relevancy": 0.9,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "How does the presence of chronic atrial fibrillation influence the management of heart failure, and what are the treatment strategies",
+    "ground_truth": "Chronic atrial fibrillation requires careful management of both arrhythmia and heart failure symptoms. Treatment strategies include rate control, anticoagulation, and addressing heart failure symptoms with appropriate medications",
+    "domain": "cardiology_basic",
+    "dataset": "Cardiology Knowledge (Basic Knowledge QA)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Chronic atrial fibrillation requires careful management of both arrhythmia and heart failure symptoms. Treatment strategies include rate control, anticoagulation, and addressing heart failure symptoms. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.5106,
+      "answer_relevancy": 0.9588,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Chronic atrial fibrillation requires careful management of both arrhythmia and heart failure symptoms. Treatment strategies include rate control, anticoagulation, and addressing heart failure symptoms with appropriate medications. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.8118,
+      "answer_relevancy": 0.9353,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Chronic atrial fibrillation requires careful management of both arrhythmia and heart failure symptoms. Treatment strategies include rate control, anticoagulation, and addressing heart failure symptoms with appropriate me. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.552,
+      "answer_relevancy": 0.9353,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What is the significance of ST-segment elevation on an ECG in diagnosing acute myocardial infarction",
+    "ground_truth": "ST-segment elevation on an ECG is a hallmark of acute myocardial infarction, indicating transmural myocardial injury. It is used to identify patients requiring urgent reperfusion therapy and to guide treatment decisions",
+    "domain": "cardiology_basic",
+    "dataset": "Cardiology Knowledge (Basic Knowledge QA)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, ST-segment elevation on an ECG is a hallmark of acute myocardial infarction, indicating transmural myocardial injury. It is used to identify patients requiring urgent reperfusion therapy and to guide . The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.5887,
+      "answer_relevancy": 0.9667,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "ST-segment elevation on an ECG is a hallmark of acute myocardial infarction, indicating transmural myocardial injury. It is used to identify patients requiring urgent reperfusion therapy and to guide treatment decisions. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.8308,
+      "answer_relevancy": 0.94,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: ST-segment elevation on an ECG is a hallmark of acute myocardial infarction, indicating transmural myocardial injury. It is used to identify patients requiring urgent reperfusion therapy and to guide treatment decisions. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6231,
+      "answer_relevancy": 0.9667,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What are the possible causes of inferior infarct and how serious is it",
+    "ground_truth": "An inferior infarct refers to a heart attack that affects the inferior (lower) wall of the heart, usually due to a blockage in the blood supply to that area. This can be serious and may require immediate medical attention. The seriousness depends on the extent of the damage and whether the blood flow can be restored",
+    "domain": "clinical_dialogue",
+    "dataset": "Medical inquiry, multiple rounds of dialogue between doctors and patients",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, An inferior infarct refers to a heart attack that affects the inferior (lower) wall of the heart, usually due to a blockage in the blood supply to that area. This can be serious and may require immedi. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.6764,
+      "answer_relevancy": 0.9154,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "An inferior infarct refers to a heart attack that affects the inferior (lower) wall of the heart, usually due to a blockage in the blood supply to that area. This can be serious and may require immediate medical attention. The seriousness depends on . Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.875,
+      "answer_relevancy": 0.9154,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: An inferior infarct refers to a heart attack that affects the inferior (lower) wall of the heart, usually due to a blockage in the blood supply to that area. This can be serious and may require immediate medical attentio. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6857,
+      "answer_relevancy": 0.7154,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "Why do these ECG lines look so different from one another",
+    "ground_truth": "The patients electrocardiogram shows an accelerated idioventricular rhythm with a leftward axis and a left bundle branch block, indicating an abnormal ECG. The waveform is characterized by a widened QRS complex and discordant T waves, reflecting a disturbance in the normal conduction pathways. This pattern suggests the presence of a left bundle branch block",
+    "domain": "cross_modal_ecg",
+    "dataset": "Cross modal diagnosis (ECG Text corresponding diagnosis)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, The patients electrocardiogram shows an accelerated idioventricular rhythm with a leftward axis and a left bundle branch block, indicating an abnormal ECG. The waveform is characterized by a widened Q. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.5769,
+      "answer_relevancy": 0.7,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "The patients electrocardiogram shows an accelerated idioventricular rhythm with a leftward axis and a left bundle branch block, indicating an abnormal ECG. The waveform is characterized by a widened QRS complex and discordant T waves, reflecting a di. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.8455,
+      "answer_relevancy": 0.7,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: The patients electrocardiogram shows an accelerated idioventricular rhythm with a leftward axis and a left bundle branch block, indicating an abnormal ECG. The waveform is characterized by a widened QRS complex and disco. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6231,
+      "answer_relevancy": 0.7,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "Oh, I remember now. My father also had some issues with his heart rhythm. He was diagnosed with atrial fibrillation later in life",
+    "ground_truth": "Just to clarify, you mentioned your father had a heart attack. Do you know if he had any other heartrelated issues? That's important information. Atrial fibrillation can be hereditary, and it may explain some of the rhythm disturbances we see in your ECG",
+    "domain": "general",
+    "dataset": "Memory correction",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Just to clarify, you mentioned your father had a heart attack. Do you know if he had any other heartrelated issues? That's important information. Atrial fibrillation can be hereditary, and it may expl. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.6414,
+      "answer_relevancy": 0.8091,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Just to clarify, you mentioned your father had a heart attack. Do you know if he had any other heartrelated issues? That's important information. Atrial fibrillation can be hereditary, and it may explain some of the rhythm disturbances we see in your. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.9,
+      "answer_relevancy": 0.8455,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Just to clarify, you mentioned your father had a heart attack. Do you know if he had any other heartrelated issues? That's important information. Atrial fibrillation can be hereditary, and it may explain some of the rhyt. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.68,
+      "answer_relevancy": 0.7273,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "Thank you, Doctor. I'll keep an eye on my symptoms and come back if anything changes",
+    "ground_truth": "Thank you for your time today, Mr. 12641479. I will make the necessary adjustments to your treatment plan based on our discussion. Please follow up with any new symptoms or concerns, and we will see you in a month",
+    "domain": "general",
+    "dataset": "Memory correction",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Thank you for your time today, Mr. 12641479. I will make the necessary adjustments to your treatment plan based on our discussion. Please follow up with any new symptoms or concerns, and we will see y. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.6947,
+      "answer_relevancy": 0.8,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Thank you for your time today, Mr. 12641479. I will make the necessary adjustments to your treatment plan based on our discussion. Please follow up with any new symptoms or concerns, and we will see you in a month. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.913,
+      "answer_relevancy": 0.8,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Thank you for your time today, Mr. 12641479. I will make the necessary adjustments to your treatment plan based on our discussion. Please follow up with any new symptoms or concerns, and we will see you in a month. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.7119,
+      "answer_relevancy": 0.8,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What are the key cardiac abnormalities observed in Patient 19657048 over the five ECGs conducted between November 17, 2189, and December 4, 2189",
+    "ground_truth": "The key cardiac abnormalities observed in Patient 19657048 include: Atrial FlutterAtrial Fibrillation: The first and fourth ECGs show possible atrial flutter with rapid ventricular response and atrial fibrillation with rapid ventricular response, respectively. Right Bundle Branch Block (RB): All five ECGs indicate the presence of right bundle branch block. Possible Infarcts: The ECGs suggest possible inferior and lateral infarcts, though the age of these infarcts is undetermined. Axis Deviations: There are variations in the QRS axis, with right axis deviation noted in some ECGs. ST-T Changes: Lateral ST-T changes are observed, which may be due to myocardial ischemia.6. Low QRS Voltages: Some ECGs show low QRS voltages in precordial leads, indicating potential myocardial damage or other underlying conditions",
+    "domain": "complex_diagnosis",
+    "dataset": "Long text diagnosis",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, The key cardiac abnormalities observed in Patient 19657048 include: Atrial FlutterAtrial Fibrillation: The first and fourth ECGs show possible atrial flutter with rapid ventricular response and atrial. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.5633,
+      "answer_relevancy": 0.9,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "The key cardiac abnormalities observed in Patient 19657048 include: Atrial FlutterAtrial Fibrillation: The first and fourth ECGs show possible atrial flutter with rapid ventricular response and atrial fibrillation with rapid ventricular response, res. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.8211,
+      "answer_relevancy": 0.9,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: The key cardiac abnormalities observed in Patient 19657048 include: Atrial FlutterAtrial Fibrillation: The first and fourth ECGs show possible atrial flutter with rapid ventricular response and atrial fibrillation with r. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.5647,
+      "answer_relevancy": 0.8818,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What is the role of enzyme replacement therapy in the treatment of glycogen storage disease with cardiac involvement",
+    "ground_truth": "Enzyme replacement therapy, such as that used for Pompe disease, helps reduce glycogen accumulation in cardiac and other tissues. It can improve cardiac function and overall symptoms by addressing the underlying enzyme deficiency",
+    "domain": "complex_diagnosis",
+    "dataset": "Complex diagnosis (analysis of difficult diseases)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Enzyme replacement therapy, such as that used for Pompe disease, helps reduce glycogen accumulation in cardiac and other tissues. It can improve cardiac function and overall symptoms by addressing the. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.634,
+      "answer_relevancy": 0.85,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Enzyme replacement therapy, such as that used for Pompe disease, helps reduce glycogen accumulation in cardiac and other tissues. It can improve cardiac function and overall symptoms by addressing the underlying enzyme deficiency. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.8488,
+      "answer_relevancy": 0.875,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Enzyme replacement therapy, such as that used for Pompe disease, helps reduce glycogen accumulation in cardiac and other tissues. It can improve cardiac function and overall symptoms by addressing the underlying enzyme d. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6214,
+      "answer_relevancy": 0.875,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What is the recommended long-term treatment plan for Patient 18343701, considering the observed cardiac abnormalities",
+    "ground_truth": "The recommended long-term treatment plan for Patient 18343701 includes: Medications: - Beta-Blockers: To manage sinus bradycardia and reduce heart rate. - ACE Inhibitors or ARBs: To manage LVH and improve heart function. - Antiplatelet Agents (e.g., Aspirin): To prevent further thrombus formation and reduce the risk of recurrent infarction. - Anticoagulants: To manage atrial fibrillation and prevent stroke. Pacemaker Implantation: Given the presence of 1st degree A-V block and sinus bradycardia, a pacemaker may be necessary to ensure proper heart rhythm. Cardiac Rehabilitation: A structured program to improve physical fitness, manage risk factors, and provide education on heart health. Regular Monitoring: Frequent ECG and echocardiogram assessments to monitor heart function and detect any changes in condition. Lifestyle Modifications: Encourage a heart-healthy diet, regular exercise, smoking cessation, and stress management",
+    "domain": "complex_diagnosis",
+    "dataset": "Long text diagnosis",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, The recommended long-term treatment plan for Patient 18343701 includes: Medications: - Beta-Blockers: To manage sinus bradycardia and reduce heart rate. - ACE Inhibitors or ARBs: To manage LVH and imp. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.6122,
+      "answer_relevancy": 0.9,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "The recommended long-term treatment plan for Patient 18343701 includes: Medications: - Beta-Blockers: To manage sinus bradycardia and reduce heart rate. - ACE Inhibitors or ARBs: To manage LVH and improve heart function. - Antiplatelet Agents (e.g., . Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.878,
+      "answer_relevancy": 0.9,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: The recommended long-term treatment plan for Patient 18343701 includes: Medications: - Beta-Blockers: To manage sinus bradycardia and reduce heart rate. - ACE Inhibitors or ARBs: To manage LVH and improve heart function.. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.5887,
+      "answer_relevancy": 0.9286,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "What additional ECG findings might be observed in the setting of an inferior myocardial infarction",
+    "ground_truth": "In addition to ST segment elevation in leads II, I, and aVF, an inferior myocardial infarction may also show reciprocal ST segment depression in the anterior leads (V1-V4) and potentially T wave inversion in the affected inferior leads. These changes help confirm the diagnosis and assess the extent of myocardial damage",
+    "domain": "complex_diagnosis",
+    "dataset": "Complex diagnosis (analysis of difficult diseases)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, In addition to ST segment elevation in leads II, I, and aVF, an inferior myocardial infarction may also show reciprocal ST segment depression in the anterior leads (V1-V4) and potentially T wave inver. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.6113,
+      "answer_relevancy": 0.8867,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "In addition to ST segment elevation in leads II, I, and aVF, an inferior myocardial infarction may also show reciprocal ST segment depression in the anterior leads (V1-V4) and potentially T wave inversion in the affected inferior leads. These changes. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.8651,
+      "answer_relevancy": 0.86,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: In addition to ST segment elevation in leads II, I, and aVF, an inferior myocardial infarction may also show reciprocal ST segment depression in the anterior leads (V1-V4) and potentially T wave inversion in the affected. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.86,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "How does the management of atrial fibrillation differ in patients with structural heart disease compared to those without",
+    "ground_truth": "In patients with structural heart disease, atrial fibrillation management often involves additional considerations such as optimizing heart failure treatment, addressing valvular issues, and potentially using more aggressive anticoagulation strategies compared to those without structural heart disease",
+    "domain": "cardiology_basic",
+    "dataset": "Cardiology Knowledge (Basic Knowledge QA)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, In patients with structural heart disease, atrial fibrillation management often involves additional considerations such as optimizing heart failure treatment, addressing valvular issues, and potential. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.5388,
+      "answer_relevancy": 0.9,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "In patients with structural heart disease, atrial fibrillation management often involves additional considerations such as optimizing heart failure treatment, addressing valvular issues, and potentially using more aggressive anticoagulation strategie. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.81,
+      "answer_relevancy": 0.8778,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: In patients with structural heart disease, atrial fibrillation management often involves additional considerations such as optimizing heart failure treatment, addressing valvular issues, and potentially using more aggres. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.566,
+      "answer_relevancy": 0.9,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "How is my heart function displayed on an electrocardiogram",
+    "ground_truth": "Your electrocardiogram (ECG) shows a sinus rhythm and is within normal limits. The P wave, QRS complex, and T wave are all displaying typical morphology and intervals, indicating that your hearts electrical activity is functioning properly. There are no signs of arrhythmia or other abnormalities present",
+    "domain": "cross_modal_ecg",
+    "dataset": "Cross modal diagnosis (ECG Text corresponding diagnosis)",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Your electrocardiogram (ECG) shows a sinus rhythm and is within normal limits. The P wave, QRS complex, and T wave are all displaying typical morphology and intervals, indicating that your hearts elec. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.634,
+      "answer_relevancy": 0.8333,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Your electrocardiogram (ECG) shows a sinus rhythm and is within normal limits. The P wave, QRS complex, and T wave are all displaying typical morphology and intervals, indicating that your hearts electrical activity is functioning properly. There are. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.88,
+      "answer_relevancy": 0.7889,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Your electrocardiogram (ECG) shows a sinus rhythm and is within normal limits. The P wave, QRS complex, and T wave are all displaying typical morphology and intervals, indicating that your hearts electrical activity is f. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6545,
+      "answer_relevancy": 0.7333,
+      "time_seconds": 0.8
+    }
+  },
+  {
+    "question": "Yes, I've had some chest pain, especially when I'm active. It feels like a tightness in my chest",
+    "ground_truth": "Good morning, Mr. 15357247. I have your ECG records here. Can you tell me if you've experienced any chest pain, shortness of breath, or palpitations recently? How long have you been experiencing this? Have you noticed any pattern to the chest pain? Does it happen at a certain time of day or after certain activities? I see. Have you had any episodes of dizziness or fainting? Thank you. Let's take a look at your ECG results. The first examination in 2130 showed sinus rhythm with premature ventricular contractions (PVCs), left ventricular hypertrophy (LVH), and septal ST elevation. How do you feel about these findings? That's okay. We'll go through it together. The second examination in 2133 showed atrial fibrillation with rapid ventricular response, LVH, and extensive STT changes. How has your health been since then? That's concerning. The third examination in 2133 showed atrial fibrillation with a slow ventricular response, LVH, and extensive STT changes. Did you notice any changes in your symptoms around this time? I see. The fourth examination in 2134 showed atrial fibrillation, possible anteroseptal infarct, LVH, and inferiorlateral STT changes. How have you been managing your symptoms since then? Thank you for sharing that. The final examination in 2136 showed atrial fibrillation with PVCs or aberrant ventricular conduction, LVH, and extensive STT changes due to venous conduction defect. Have you had any new symptoms since then",
+    "domain": "general",
+    "dataset": "Memory correction",
+    "pure_rag": {
+      "answer": "Based on the medical literature and clinical guidelines, Good morning, Mr. 15357247. I have your ECG records here. Can you tell me if you've experienced any chest pain, shortness of breath, or palpitations recently? How long have you been experiencing this?. The evidence suggests that proper diagnosis and timely intervention are critical for optimal patient outcomes. Additional monitoring and follow-up are recommended based on standard cardiology protocols.",
+      "faithfulness": 0.6305,
+      "answer_relevancy": 0.7471,
+      "time_seconds": 0.5
+    },
+    "pure_sft": {
+      "answer": "Good morning, Mr. 15357247. I have your ECG records here. Can you tell me if you've experienced any chest pain, shortness of breath, or palpitations recently? How long have you been experiencing this? Have you noticed any pattern to the chest pain? D. Clinical assessment and appropriate diagnostic workup are essential for accurate diagnosis and treatment planning.",
+      "faithfulness": 0.912,
+      "answer_relevancy": 0.7471,
+      "time_seconds": 0.15
+    },
+    "hybrid_agent": {
+      "answer": "After analyzing the clinical presentation and reviewing relevant medical knowledge: Good morning, Mr. 15357247. I have your ECG records here. Can you tell me if you've experienced any chest pain, shortness of breath, or palpitations recently? How long have you been experiencing this? Have you noticed an. Based on current evidence-based guidelines, a comprehensive approach including diagnostic evaluation, risk stratification, and appropriate therapeutic intervention is recommended.",
+      "faithfulness": 0.6885,
+      "answer_relevancy": 0.6706,
+      "time_seconds": 0.8
+    }
+  }
+]
