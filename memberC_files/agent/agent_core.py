@@ -24,7 +24,7 @@ import torch
 # Add project root
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
-from config.settings import (
+from memberC_files.config.settings import (
     OUTPUT_DIR,
     AGENT_SYSTEM_PROMPT,
     INFERENCE_MAX_NEW_TOKENS,
@@ -97,7 +97,7 @@ class PureRAGPipeline:
         self._model.eval()
 
         # Load RAG
-        from agent.tools import MedicalRAGTool
+        from memberC_files.agent.tools import MedicalRAGTool
         self._rag_tool = MedicalRAGTool()
 
         self._loaded = True
@@ -293,7 +293,7 @@ class HybridAgentPipeline:
         logger.info("Loading Pipeline 3 (Hybrid Agent)...")
 
         # Load tools
-        from agent.tools import MedicalRAGTool, MedicalModelTool
+        from memberC_files.agent.tools import MedicalRAGTool, MedicalModelTool
 
         logger.info("  Loading RAG tool...")
         self._rag_tool = MedicalRAGTool()

@@ -24,7 +24,7 @@ from transformers import (
 
 # Add config to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from config.settings import (
+from memberC_files.config.settings import (
     FAISS_INDEX_PATH,
     FAISS_DOCS_PATH,
     EMBEDDING_MODEL,

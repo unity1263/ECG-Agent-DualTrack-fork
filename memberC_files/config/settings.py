@@ -33,7 +33,7 @@ os.makedirs(DATA_DIR, exist_ok=True)
 # Model & Embedding Config
 # ============================================================================
 # Base model (used for Pipeline 1: Pure RAG with 7B)
-BASE_MODEL_7B = "Qwen/Qwen2-7B-Instruct"
+BASE_MODEL_7B = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"  # 共用1.5B (6GB显存限制)
 
 # Fine-tuned model (used for Pipeline 2: Pure SFT and Pipeline 3: Hybrid Agent)
 BASE_MODEL_1_5B = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"

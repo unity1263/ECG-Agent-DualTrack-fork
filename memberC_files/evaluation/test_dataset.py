@@ -22,7 +22,7 @@ import argparse
 from collections import defaultdict
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
-from config.settings import (
+from memberC_files.config.settings import (
     RAG_CORPUS_PATH,
     SFT_DATASET_PATH,
     DATA_DIR,

@@ -18,7 +18,7 @@ import argparse
 from collections import defaultdict
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
-from config.settings import OUTPUT_DIR
+from memberC_files.config.settings import OUTPUT_DIR
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)

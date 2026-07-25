@@ -21,7 +21,7 @@ import numpy as np
 # Add project root to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
-from config.settings import (
+from memberC_files.config.settings import (
     RAG_CORPUS_PATH,
     FAISS_INDEX_PATH,
     FAISS_DOCS_PATH,

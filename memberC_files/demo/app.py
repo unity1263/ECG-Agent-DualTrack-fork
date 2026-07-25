@@ -1,479 +1,266 @@
 """
-Medical AI Agent — Interactive Web Demo (Gradio).
+医疗 AI Agent — 交互式 Web 演示 (Gradio).
 
-Provides a user-friendly web interface for the Medical AI Agent system.
-Users can:
-  - Input medical questions / clinical scenarios
-  - Select pipeline mode (Pure RAG, Pure SFT, or Hybrid Agent)
-  - View generated answers with retrieval context
-  - Compare results across all three pipelines side-by-side
-  - See example questions for quick testing
-
-Usage:
-    python -m memberC_files.demo.app
-    python -m memberC_files.demo.app --port 7860 --share
+提供一个简洁的中文问答界面，支持三种推理管道。
 """
+
 import os
 import sys
-import json
-import time
 import logging
 import argparse
-from typing import Optional
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
-from config.settings import OUTPUT_DIR
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-# Check if Gradio is available
+# --- 检查依赖 ---
 try:
     import gradio as gr
     HAS_GRADIO = True
 except ImportError:
     HAS_GRADIO = False
-    logger.error(
-        "Gradio is required for the web demo. Install with: pip install gradio"
-    )
 
-
-# ============================================================================
-# Demo Mode — generates sample responses when ML deps are not available
-# ============================================================================
-DEMO_RESPONSES = {
+# --- 预置示例回答 (无 GPU 时使用) ---
+DEMO_ANSWERS = {
     "pure_rag": {
-        "answer": (
-            "Based on the retrieved medical literature and clinical guidelines, "
-            "the patient presentation is consistent with acute coronary syndrome. "
-            "Immediate management should include:\n\n"
-            "1. **Initial Assessment**: 12-lead ECG within 10 minutes of arrival\n"
-            "2. **Cardiac Biomarkers**: High-sensitivity troponin measurement\n"
-            "3. **Immediate Therapy**: \n"
-            "   - Aspirin 162-325 mg chewed\n"
-            "   - Nitroglycerin for ongoing chest pain\n"
-            "   - Oxygen if SpO2 < 90%\n"
-            "4. **Reperfusion Strategy**: Primary PCI within 90 minutes if STEMI confirmed\n\n"
-            "The ST-segment elevation in V1-V4 indicates anteroseptal MI, likely due to "
-            "LAD occlusion. Early reperfusion is critical for myocardial salvage."
-        ),
-        "contexts": [
-            "ST-segment elevation myocardial infarction (STEMI) is diagnosed when there is "
-            "ST-segment elevation ≥1 mm in two contiguous limb leads or ≥2 mm in two contiguous "
-            "precordial leads. Anteroseptal MI (V1-V4) typically results from occlusion of the "
-            "left anterior descending (LAD) artery. Primary PCI is the preferred reperfusion "
-            "strategy when available within 90-120 minutes of first medical contact."
-        ],
-        "time": 0.45,
+        "answer": "根据检索到的医学文献和临床指南，该患者的临床表现符合**急性前壁ST段抬高型心肌梗死（STEMI）**。\n\n"
+                  "**诊断依据：**\n"
+                  "1. V1-V4导联ST段抬高≥3mm，提示前壁透壁性心肌缺血\n"
+                  "2. 胸痛、大汗、呼吸困难为典型急性心梗三联征\n"
+                  "3. 左前降支（LAD）是可能的犯罪血管\n\n"
+                  "**紧急处理措施：**\n"
+                  "1. 立即行12导联心电图确认\n"
+                  "2. 监测心肌标志物（hs-cTnI）\n"
+                  "3. 双联抗血小板治疗（阿司匹林+P2Y12抑制剂）\n"
+                  "4. 急诊PCI，目标门-球时间≤90分钟",
+        "time": 0.5,
     },
     "pure_sft": {
-        "answer": (
-            "The clinical presentation indicates acute ST-elevation myocardial infarction "
-            "(STEMI) of the anteroseptal wall. Immediate action plan:\n"
-            "- Activate emergency cardiac catheterization team\n"
-            "- Administer dual antiplatelet therapy (aspirin + P2Y12 inhibitor)\n"
-            "- Consider anticoagulation with heparin\n"
-            "- Urgent coronary angiography with intent for primary PCI"
-        ),
-        "contexts": [],
+        "answer": "**诊断：急性前壁ST段抬高型心肌梗死（Anterior STEMI）**\n\n"
+                  "**处理方案：**\n"
+                  "- 立即启动急诊PCI导管室\n"
+                  "- 双联抗血小板治疗\n"
+                  "- 肝素抗凝\n"
+                  "- 持续心电监护",
         "time": 0.15,
     },
     "hybrid_agent": {
-        "answer": (
-            "**Clinical Analysis (Hybrid Agent)**\n\n"
-            "After retrieving relevant medical knowledge and performing diagnostic reasoning:\n\n"
-            "**Diagnosis**: Acute Anteroseptal ST-Elevation Myocardial Infarction (STEMI)\n\n"
-            "**Rationale**:\n"
-            "- ST elevation of 3mm in V1-V4 indicates transmural ischemia in the anteroseptal region\n"
-            "- The LAD artery is the likely culprit vessel\n"
-            "- Sudden crushing chest pain with diaphoresis is classic for acute MI\n\n"
-            "**Immediate Actions** (per ACC/AHA Guidelines):\n"
-            "1. MONA protocol: Morphine, Oxygen, Nitroglycerin, Aspirin\n"
-            "2. Activate cath lab for primary PCI (goal: door-to-balloon ≤ 90 min)\n"
-            "3. Start dual antiplatelet therapy\n"
-            "4. Continuous cardiac monitoring\n\n"
-            "**Evidence Support**: Retrieved clinical guidelines confirm this management approach "
-            "with Class I recommendation for primary PCI in STEMI."
-        ),
-        "contexts": [
-            "ACC/AHA STEMI Guidelines: For patients with STEMI presenting within 12 hours "
-            "of symptom onset, primary PCI is recommended (Class I, Level of Evidence A). "
-            "Door-to-balloon time should be ≤ 90 minutes.",
-            "ECG Interpretation: ST elevation in leads V1-V4 characteristically indicates "
-            "anteroseptal myocardial infarction due to LAD occlusion proximal to the first "
-            "septal perforator."
-        ],
-        "time": 0.80,
+        "answer": "**综合分析（智能体模式）**\n\n"
+                  "**诊断：** 急性前壁ST段抬高型心肌梗死\n\n"
+                  "**推理过程：**\n"
+                  "- ST段在V1-V4抬高3mm → 前壁透壁性缺血 → LAD闭塞可能性大\n"
+                  "- 胸痛+大汗+呼吸困难为典型ACS表现\n\n"
+                  "**处理建议（依据ACC/AHA指南）：**\n"
+                  "1. MONA方案：吗啡、吸氧、硝酸甘油、阿司匹林\n"
+                  "2. 启动导管室 → 急诊PCI\n"
+                  "3. 双联抗血小板 + 抗凝治疗\n"
+                  "4. 持续监护",
+        "time": 0.8,
     },
 }
 
-
-# ============================================================================
-# Predefined example questions
-# ============================================================================
-EXAMPLE_QUESTIONS = [
-    [
-        "Patient presents with sudden crushing chest pain, diaphoresis, and dyspnea. "
-        "ECG shows 3mm ST-segment elevation in leads V1-V4. What is the suspected "
-        "diagnosis and immediate action plan?"
-    ],
-    [
-        "A 65-year-old patient with a history of palpitations has an ECG showing "
-        "irregular R-R intervals and absent P waves, replaced by rapid fibrillatory "
-        "waves. What is the diagnosis?"
-    ],
-    [
-        "What are the long-term outcomes of atrial septal defect (ASD) closure in adults?"
-    ],
-    [
-        "Explain the significance of QRS changes suggestive of left ventricular "
-        "hypertrophy (LVH) in a patient with chronic hypertension."
-    ],
-    [
-        "A 55-year-old diabetic patient presents with nausea, fatigue, and mild chest "
-        "discomfort. ECG shows ST depression in leads V3-V6. Troponin I is elevated. "
-        "What is the diagnosis and management?"
-    ],
-    [
-        "What is the Wells criteria for pulmonary embolism and how is it applied "
-        "in the emergency department setting?"
-    ],
+EXAMPLES = [
+    ["患者突发胸痛、大汗、呼吸困难，心电图显示V1-V4导联ST段抬高3mm。最可能的诊断是什么？应该采取什么紧急措施？"],
+    ["65岁患者，有房颤病史，心电图显示R-R间期绝对不齐，P波消失代之以大小不等的f波。请给出诊断。"],
+    ["房间隔缺损（ASD）封堵术后，成人患者的长期预后如何？"],
+    ["糖尿病合并高血压患者，55岁，心电图V3-V6导联ST段压低，肌钙蛋白I升高。诊断与处理？"],
 ]
 
 
 # ============================================================================
-# Core demo logic
+# 后端
 # ============================================================================
 class DemoBackend:
-    """
-    Backend for the web demo. Handles question processing with the selected pipeline.
-
-    Falls back to pre-generated demo responses when ML dependencies are not installed,
-    allowing the UI to be tested and demonstrated without GPU access.
-    """
+    """处理问答请求，有 GPU 时走真实推理，无 GPU 用预生成回答。"""
 
     def __init__(self):
-        self._pipelines_available = False
+        self._available = False
         self._runner = None
-        self._try_load_pipelines()
+        self._try_load()
 
-    def _try_load_pipelines(self):
-        """Try to load actual ML pipelines; fall back to demo mode."""
+    def _try_load(self):
         try:
             import torch
             if torch.cuda.is_available():
-                from agent.agent_core import MedicalAgentRunner, PipelineMode
+                from memberC_files.agent.agent_core import MedicalAgentRunner, PipelineMode
                 self._runner = MedicalAgentRunner()
                 self._PipelineMode = PipelineMode
-                self._pipelines_available = True
-                logger.info("GPU available — using real model inference.")
+                self._available = True
+                logger.info("✅ GPU 可用，启用真实推理。")
             else:
-                logger.info("No GPU — using demo mode.")
-        except ImportError as e:
-            logger.info(f"ML dependencies not available ({e}) — using demo mode.")
+                logger.info("⚠️ 未检测到 GPU，使用演示模式。")
+        except Exception as e:
+            logger.info(f"⚠️ ML 依赖不可用 ({e})，使用演示模式。")
 
-    def process_question(
-        self,
-        question: str,
-        mode: str = "hybrid",
-        progress: Optional[gr.Progress] = None,
-    ) -> tuple:
-        """
-        Process a medical question through the selected pipeline.
-
-        Args:
-            question: Medical question text
-            mode: "pure_rag" | "pure_sft" | "hybrid" | "compare_all"
-            progress: Gradio progress tracker
-
-        Returns:
-            Tuple of (answer_text, contexts_text, pipeline_info, time_text)
-        """
+    def ask(self, question: str, mode: str) -> tuple:
+        """处理用户问题，返回 (回答, 管道信息, 耗时)。"""
         if not question or not question.strip():
-            return (
-                "⚠️ Please enter a medical question.",
-                "",
-                "No question provided",
-                "",
-            )
+            return "⚠️ 请输入医学问题。", "", ""
 
-        if self._pipelines_available and mode != "compare_all":
-            # Real inference
-            pipe_mode = self._PipelineMode(mode)
-            result = self._runner.run(question, pipe_mode)
+        if self._available:
+            try:
+                # Map demo mode names to PipelineMode enum values
+                mode_map = {"pure_rag": "pure_rag", "pure_sft": "pure_sft", "hybrid_agent": "hybrid"}
+                pipe = self._PipelineMode(mode_map.get(mode, mode))
+                import time
+                t0 = time.time()
+                result = self._runner.run(question, pipe)
+                t = time.time() - t0
+                answer = result.get("answer", "未能生成回答。")
+                info = f"管道: {result.get('pipeline', mode)}"
+                time_str = f"⏱ {t:.1f}s"
+                return answer, info, time_str
+            except Exception as e:
+                logger.error(f"推理失败: {e}")
+                # 出错时回退到演示模式
+                pass
 
-            answer = result.get("answer", "No answer generated.")
-            contexts = "\n\n---\n\n".join(
-                result.get("retrieved_docs", []) or result.get("contexts", [])
-            ) or "(No retrieval context — direct model inference)"
-            info = f"Pipeline: {result.get('pipeline', 'unknown')}"
-            time_str = f"Response generated"
-
-        elif mode == "compare_all":
-            # Side-by-side comparison
-            if self._pipelines_available:
-                from agent.agent_core import PipelineMode
-                results = self._runner.run_all_pipelines(question)
-
-                answer_parts = []
-                for pipe_name, pipe_label in [
-                    ("pure_rag", "🔴 Pipeline 1: Pure RAG (7B + Retrieval)"),
-                    ("pure_sft", "🔵 Pipeline 2: Pure SFT (Fine-tuned 1.5B)"),
-                    ("hybrid", "🟢 Pipeline 3: Hybrid Agent (1.5B + RAG)"),
-                ]:
-                    r = results.get(pipe_name, {})
-                    answer_parts.append(f"### {pipe_label}\n{r.get('answer', 'N/A')}\n")
-
-                answer = "\n---\n\n".join(answer_parts)
-                contexts = "(Comparison mode — each pipeline may use different context)"
-                info = "All three pipelines compared"
-                time_str = "Comparison complete"
-            else:
-                # Demo comparison
-                answer_parts = []
-                for pipe_key, pipe_label in [
-                    ("pure_rag", "🔴 Pipeline 1: Pure RAG (7B + Retrieval)"),
-                    ("pure_sft", "🔵 Pipeline 2: Pure SFT (Fine-tuned 1.5B)"),
-                    ("hybrid", "🟢 Pipeline 3: Hybrid Agent (1.5B + RAG)"),
-                ]:
-                    r = DEMO_RESPONSES[pipe_key]
-                    answer_parts.append(f"### {pipe_label}\n{r['answer']}\n")
-
-                answer = "\n---\n\n".join(answer_parts)
-                contexts = "### 🔴 Pure RAG Context\n" + DEMO_RESPONSES["pure_rag"]["contexts"][0] \
-                    + "\n\n### 🟢 Hybrid Agent Context\n" + DEMO_RESPONSES["hybrid_agent"]["contexts"][0]
-                info = "All three pipelines (demo mode)"
-                time_str = (
-                    f"Pure RAG: {DEMO_RESPONSES['pure_rag']['time']:.2f}s | "
-                    f"Pure SFT: {DEMO_RESPONSES['pure_sft']['time']:.2f}s | "
-                    f"Hybrid: {DEMO_RESPONSES['hybrid_agent']['time']:.2f}s"
-                )
-
-        else:
-            # Single pipeline demo mode
-            r = DEMO_RESPONSES.get(mode, DEMO_RESPONSES["hybrid"])
-            answer = r["answer"]
-            if r["contexts"]:
-                contexts = "\n\n---\n\n".join(
-                    f"**Document {i+1}**: {c}"
-                    for i, c in enumerate(r["contexts"])
-                )
-            else:
-                contexts = "(No retrieval context — direct model inference)"
-            info = f"Pipeline: {mode} (demo mode)"
-            time_str = f"Response time: {r['time']:.2f}s"
-
-        return answer, contexts, info, time_str
+        # 演示模式
+        import time
+        r = DEMO_ANSWERS.get(mode, DEMO_ANSWERS["hybrid_agent"])
+        answer = r["answer"]
+        mode_names = {"pure_rag": "纯 RAG", "pure_sft": "纯 SFT", "hybrid_agent": "混合智能体"}
+        info = f"管道: {mode_names.get(mode, mode)} (演示模式)"
+        time_str = f"⏱ {r['time']:.2f}s (模拟)"
+        time.sleep(0.3)
+        return answer, info, time_str
 
 
 # ============================================================================
-# Build Gradio UI
+# UI
 # ============================================================================
 def build_ui(backend: DemoBackend) -> gr.Blocks:
-    """Build the Gradio web interface."""
+    with gr.Blocks(title="🏥 医疗AI智能体 — 心电图与心血管临床决策支持") as demo:
 
-    # Custom CSS for medical-themed styling
-    custom_css = """
-    .medical-header {
-        text-align: center;
-        padding: 20px;
-        background: linear-gradient(135deg, #1a5276, #2e86c1);
-        color: white;
-        border-radius: 12px;
-        margin-bottom: 20px;
-    }
-    .medical-header h1 {
-        font-size: 2em;
-        margin: 0;
-    }
-    .medical-header p {
-        font-size: 1.1em;
-        opacity: 0.9;
-    }
-    .pipeline-rag { border-left: 4px solid #E63946; }
-    .pipeline-sft { border-left: 4px solid #457B9D; }
-    .pipeline-hybrid { border-left: 4px solid #2A9D8F; }
-    footer { visibility: hidden; }
-    """
-
-    with gr.Blocks(
-        css=custom_css,
-        title="Medical AI Agent | ECG & Cardiology",
-        theme=gr.themes.Soft(primary_hue="blue", secondary_hue="teal"),
-    ) as demo:
-
-        # Header
-        gr.HTML("""
-        <div class="medical-header">
-            <h1>🏥 Medical AI Agent</h1>
-            <p>ECG Interpretation & Cardiology Clinical Decision Support</p>
-            <p style="font-size: 0.85em; opacity: 0.8;">
-                Powered by DeepSeek-R1-Distill-Qwen-1.5B + RAG Knowledge Retrieval
-            </p>
-        </div>
+        # --- 标题 ---
+        gr.Markdown("""
+        # 🏥 医疗 AI 智能体
+        ### 心电图解读 & 心血管临床决策支持
         """)
 
-        # Main layout: sidebar + content
+        # --- 输入区 ---
+        question_input = gr.Textbox(
+            label="📝 请输入医学问题 / 临床场景",
+            placeholder="例如：患者突发胸痛、大汗、呼吸困难，心电图V1-V4导联ST段抬高3mm。最可能的诊断是什么？",
+            lines=3,
+        )
+
+        # --- 模式选择 ---
         with gr.Row():
-            # Sidebar — controls
-            with gr.Column(scale=1, min_width=280):
-                gr.Markdown("### ⚙️ Configuration")
+            mode_radio = gr.Radio(
+                choices=[
+                    ("🟢 混合智能体 (1.5B + RAG 检索)", "hybrid_agent"),
+                    ("🔵 纯 SFT (微调 1.5B 模型)", "pure_sft"),
+                    ("🔴 纯 RAG (检索 + 大模型)", "pure_rag"),
+                ],
+                value="hybrid_agent",
+                label="推理模式",
+            )
+            submit_btn = gr.Button("🔍 开始分析", variant="primary", size="lg")
 
-                pipeline_mode = gr.Radio(
-                    choices=[
-                        ("🟢 Hybrid Agent (1.5B + RAG)", "hybrid"),
-                        ("🔴 Pure RAG (7B + Retrieval)", "pure_rag"),
-                        ("🔵 Pure SFT (Fine-tuned 1.5B)", "pure_sft"),
-                        ("📊 Compare All Three", "compare_all"),
-                    ],
-                    value="hybrid",
-                    label="Pipeline Mode",
-                    info="Choose how the agent processes your question",
-                )
+        # --- 状态 ---
+        with gr.Row():
+            mode_label = gr.Textbox(label="当前管道", value="混合智能体", interactive=False, scale=1)
+            time_label = gr.Textbox(label="耗时", value="", interactive=False, scale=1)
 
-                gr.Markdown("---")
-                gr.Markdown("### 💡 Example Questions")
-                examples = gr.Examples(
-                    examples=EXAMPLE_QUESTIONS,
-                    inputs=[gr.Textbox(label="Question", visible=False)],
-                    label="Click an example to try",
-                )
+        # --- 输出 ---
+        answer_output = gr.Markdown(
+            value="*请在上方输入医学问题，点击「开始分析」获取 AI 回答。*",
+            label="分析结果",
+        )
 
-                gr.Markdown("---")
-                gr.Markdown("""
-                ### 📋 Pipeline Info
+        # --- 示例 ---
+        gr.Markdown("### 💡 试试这些问题")
+        gr.Examples(examples=EXAMPLES, inputs=[question_input])
 
-                | Pipeline | Model | Knowledge |
-                |----------|-------|-----------|
-                | **Hybrid Agent** | 1.5B Fine-tuned | RAG + SFT |
-                | **Pure RAG** | 7B Base | Retrieval |
-                | **Pure SFT** | 1.5B Fine-tuned | Weights only |
-                """)
+        # --- 评测数据 ---
+        with gr.Accordion("📊 三管道评测数据 (RAGAS)", open=True):
+            gr.Markdown("""
+            ### 🔬 RAGAS 双轨对比评测结果
 
-                submit_btn = gr.Button(
-                    "🔍 Analyze Medical Question",
-                    variant="primary",
-                    size="lg",
-                )
+            评测基于 **150 条未参练医学问答**（5 大领域分层抽样），使用 RAGAS 框架计算 Faithfulness（忠实度）和 Answer Relevancy（答案相关性）。
 
-            # Main content — results
-            with gr.Column(scale=2):
-                question_input = gr.Textbox(
-                    label="📝 Medical Question / Clinical Scenario",
-                    placeholder=(
-                        "Describe the patient's symptoms, ECG findings, and clinical "
-                        "context. E.g.: 'Patient presents with crushing chest pain, "
-                        "ST elevation 3mm in V1-V4...'"
-                    ),
-                    lines=4,
-                )
+            | 管道 | 模型 | Faithfulness | Answer Relevancy | 推理速度 | 显存 |
+            |------|------|:----------:|:-------------:|:------:|:---:|
+            | 🔴 **Pure RAG** | DeepSeek-1.5B + FAISS检索 | 0.5954 | **0.8744** | 中 | ~3 GB |
+            | 🔵 **Pure SFT** | DeepSeek-1.5B QLoRA | **0.8673** | 0.8602 | **快** ⚡ | ~2 GB |
+            | 🟢 **Hybrid Agent** | 1.5B QLoRA + RAG | 0.6179 | 0.8364 | 慢 | ~4 GB |
 
-                with gr.Row():
-                    pipeline_badge = gr.Textbox(
-                        label="Active Pipeline",
-                        value="Hybrid Agent (demo mode)",
-                        interactive=False,
-                        scale=1,
-                    )
-                    time_display = gr.Textbox(
-                        label="Response Time",
-                        value="",
-                        interactive=False,
-                        scale=1,
-                    )
+            ### 💡 关键结论
 
-                with gr.Tabs():
-                    with gr.TabItem("📋 Generated Answer", id="answer_tab"):
-                        answer_output = gr.Markdown(
-                            value="*Enter a medical question and click 'Analyze' to begin.*",
-                            label="Answer",
-                            elem_classes=["pipeline-hybrid"],
-                        )
+            > **QLoRA 微调在忠实度上最优，知识"内化"比"检索"更可靠。**
+            >
+            > Pure SFT 的 Faithfulness 达 **0.8673**，远超 Pure RAG 的 0.5954（+45.6%）。
+            > Hybrid Agent 的 Faithfulness (0.6179) 介于两者之间，说明 Agent 编排带来了折中效果。
 
-                    with gr.TabItem("📚 Retrieved Context", id="context_tab"):
-                        context_output = gr.Markdown(
-                            value="*Retrieved medical knowledge will appear here.*",
-                            label="Retrieved Context",
-                        )
+            ### 📋 评测数据集
 
-                # Evaluation metrics (shown in compare mode)
-                with gr.Accordion("📊 Evaluation Metrics", open=False):
-                    gr.Markdown("""
-                    Metrics are computed when running in **Compare All** mode:
-                    - **Faithfulness**: How well the answer is grounded in retrieved context
-                    - **Answer Relevancy**: How relevant the answer is to the question
-                    - **Response Time**: Wall-clock time for answer generation
-                    """)
+            | 领域 | 描述 | 占比 |
+            |------|------|:--:|
+            | 基础心脏病学 | Cardiology Knowledge QA | 20% |
+            | 跨模态 ECG 诊断 | ECG Text Diagnosis | 20% |
+            | 复杂疾病分析 | Complex Diagnosis | 20% |
+            | 风险评估 | Risk Assessment | 20% |
+            | 临床对话 | Clinical Dialogue | 20% |
 
-        # Footer
-        gr.HTML("""
-        <div style="text-align: center; padding: 15px; color: #666; font-size: 0.85em;">
-            <p>🩺 Medical AI Agent — Course Project | Data from 78K cleaned medical QA pairs
-            | Model: DeepSeek-R1-Distill-Qwen-1.5B QLoRA fine-tuned</p>
-            <p><strong>⚠️ Disclaimer</strong>: This is an educational project. Not for clinical use.</p>
-        </div>
-        """)
+            *测试集从 78,136 条语料中排除 SFT 训练集后分层抽样（seed=42），确保评测公平性。*
+            """)
 
-        # Wire up interactions
+        # --- 说明 ---
+        with gr.Accordion("📖 关于三种模式", open=False):
+            gr.Markdown("""
+            | 模式 | 模型 | 知识来源 | 特点 |
+            |------|------|---------|------|
+            | 🟢 **混合智能体** | DeepSeek-1.5B + LoRA | 模型权重 + RAG检索 | 取长补短，推荐使用 |
+            | 🔵 **纯 SFT** | DeepSeek-1.5B + LoRA | 仅模型权重 | 速度快，知识内化模型 |
+| 🔴 **纯 RAG** | DeepSeek-1.5B (基础) | FAISS 检索 | 基础模型+外部知识库 |
+            """)
+
+        gr.Markdown("---\n*⚠️ 本项目为课程作业，仅供教学演示，不可用于临床诊断。*")
+
+        # --- 事件绑定 ---
         def on_submit(question, mode):
-            answer, contexts, info, time_str = backend.process_question(question, mode)
-            return answer, contexts, info, time_str
+            answer, info, time_str = backend.ask(question, mode)
+            return answer, info, time_str
 
         submit_btn.click(
             fn=on_submit,
-            inputs=[question_input, pipeline_mode],
-            outputs=[answer_output, context_output, pipeline_badge, time_display],
+            inputs=[question_input, mode_radio],
+            outputs=[answer_output, mode_label, time_label],
         )
-
-        # Enable Enter key to submit
         question_input.submit(
             fn=on_submit,
-            inputs=[question_input, pipeline_mode],
-            outputs=[answer_output, context_output, pipeline_badge, time_display],
+            inputs=[question_input, mode_radio],
+            outputs=[answer_output, mode_label, time_label],
         )
 
     return demo
 
 
-# ============================================================================
-# Launch
-# ============================================================================
 def main():
-    parser = argparse.ArgumentParser(description="Medical AI Agent Web Demo")
-    parser.add_argument("--port", type=int, default=7860, help="Port to listen on")
-    parser.add_argument("--host", type=str, default="0.0.0.0", help="Host to bind to")
-    parser.add_argument("--share", action="store_true", help="Create public Gradio link")
+    parser = argparse.ArgumentParser(description="医疗 AI Agent Web 演示")
+    parser.add_argument("--port", type=int, default=7860)
+    parser.add_argument("--host", type=str, default="0.0.0.0")
+    parser.add_argument("--share", action="store_true")
     args = parser.parse_args()
 
     if not HAS_GRADIO:
-        print("=" * 60)
-        print("ERROR: Gradio is required for the web demo.")
-        print("Please install dependencies:")
-        print("  pip install -r memberC_files/requirements.txt")
-        print("=" * 60)
+        print("错误：需要安装 Gradio。请运行: pip install gradio")
         sys.exit(1)
 
-    print("=" * 60)
-    print("  Medical AI Agent — Web Demo")
-    print("=" * 60)
-    print(f"  Starting server on http://{args.host}:{args.port}")
-    print()
-    print("  Pipeline modes:")
-    print("    🟢 Hybrid Agent  — Fine-tuned 1.5B + RAG (recommended)")
-    print("    🔴 Pure RAG       — 7B base model + retrieval")
-    print("    🔵 Pure SFT       — Fine-tuned 1.5B only")
-    print("    📊 Compare All     — Side-by-side comparison")
-    print("=" * 60)
+    print("=" * 50)
+    print("  🏥 医疗 AI 智能体 — Web Demo")
+    print("=" * 50)
+    print(f"  地址: http://{args.host}:{args.port}")
+    print(f"  模式: {'GPU 真实推理' if torch.cuda.is_available() else '演示模式'}")
+    print("=" * 50)
 
     backend = DemoBackend()
     demo = build_ui(backend)
-
-    demo.launch(
-        server_name=args.host,
-        server_port=args.port,
-        share=args.share,
-    )
+    demo.launch(server_name=args.host, server_port=args.port, share=args.share)
 
 
 if __name__ == "__main__":
+    import torch
     main()
