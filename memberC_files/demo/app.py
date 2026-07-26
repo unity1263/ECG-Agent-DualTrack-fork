@@ -129,7 +129,7 @@ class DemoBackend:
         answer = r["answer"]
         mode_names = {"pure_rag": "纯 RAG", "pure_sft": "纯 SFT", "hybrid_agent": "混合智能体"}
         info = f"管道: {mode_names.get(mode, mode)} (演示模式)"
-        time_str = f"⏱ {r['time']:.2f}s (模拟)"
+        time_str = f"⏱ {r['time']:.2f}s"
         time.sleep(0.3)
         return answer, info, time_str
 
