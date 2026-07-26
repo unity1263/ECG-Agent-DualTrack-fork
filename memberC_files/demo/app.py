@@ -103,6 +103,13 @@ class DemoBackend:
                 # Map demo mode names to PipelineMode enum values
                 mode_map = {"pure_rag": "pure_rag", "pure_sft": "pure_sft", "hybrid_agent": "hybrid"}
                 pipe = self._PipelineMode(mode_map.get(mode, mode))
+
+                # Free previous pipeline to avoid OOM on 6GB GPU
+                self._runner._pipelines.clear()
+                import torch, gc
+                gc.collect()
+                torch.cuda.empty_cache()
+
                 import time
                 t0 = time.time()
                 result = self._runner.run(question, pipe)
