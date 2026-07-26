@@ -278,9 +278,8 @@ class MedicalModelTool:
             {
                 "role": "system",
                 "content": (
-                    "You are an expert medical AI assistant specializing in cardiology, "
-                    "ECG interpretation, and clinical decision support. Provide accurate, "
-                    "evidence-based, and structured medical information."
+                    "你是专业的心血管医学AI助手，擅长心电图解读和临床决策支持。"
+                    "请始终用中文回答，提供准确、循证的、结构化的医学信息。"
                 ),
             },
             {"role": "user", "content": prompt},

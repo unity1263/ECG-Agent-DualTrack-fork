@@ -120,19 +120,18 @@ class PureRAGPipeline:
             context_parts.append(f"[Document {i}] (source: {r['source']})\n{r['content']}")
         context = "\n\n".join(context_parts)
 
-        augmented_prompt = f"""You are a medical AI assistant. Use the following reference documents to answer the question.
-If the documents are not relevant, use your own medical knowledge.
+        augmented_prompt = f"""你是专业的心血管医学AI助手。请参考以下文献回答问题，如果文献不相关则使用你的医学知识。请务必用中文回答。
 
-Reference Documents:
+参考文献：
 {context}
 
-Question: {question}
+问题：{question}
 
-Based on the reference documents and your medical knowledge, provide a comprehensive answer:"""
+请基于文献和医学知识，用中文给出全面的回答："""
 
         # Step 3: Generate
         messages = [
-            {"role": "system", "content": "You are an expert medical AI assistant."},
+            {"role": "system", "content": "你是专业的心血管医学AI助手。请始终用中文回答。"},
             {"role": "user", "content": augmented_prompt},
         ]
         text = self._tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
@@ -367,14 +366,14 @@ class HybridAgentPipeline:
             context_parts.append(f"[Reference {i}] {r['content']}")
         context = "\n\n".join(context_parts)
 
-        augmented_prompt = f"""You are a medical AI assistant. Use the following reference information to answer the question.
+        augmented_prompt = f"""你是专业的心血管医学AI助手。请参考以下文献信息回答问题。请务必用中文回答。
 
-Reference Information:
+参考文献：
 {context}
 
-Question: {question}
+问题：{question}
 
-Provide a comprehensive, evidence-based answer:"""
+请用中文给出全面、循证的回答："""
 
         # Step 3: Generate with fine-tuned model
         answer = self._model_tool.generate(augmented_prompt)
@@ -390,13 +389,13 @@ Provide a comprehensive, evidence-based answer:"""
 
     def _smolagents_answer(self, question: str) -> dict:
         """Use smolagents CodeAgent to answer the question."""
-        agent_prompt = f"""Answer the following medical question. You can:
-1. Use execute_medical_knowledge_retrieval to search for relevant medical information
-2. Use invoke_diagnostic_reasoning for clinical analysis
+        agent_prompt = f"""请回答以下医学问题。你可以使用以下工具：
+1. execute_medical_knowledge_retrieval — 检索相关医学文献
+2. invoke_diagnostic_reasoning — 进行临床诊断推理
 
-Question: {question}
+问题：{question}
 
-Provide a thorough, evidence-based answer."""
+请务必用中文给出全面、循证的回答。"""
         result = self._agent.run(agent_prompt)
 
         return {
