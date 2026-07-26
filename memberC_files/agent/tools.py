@@ -266,8 +266,14 @@ class MedicalModelTool:
         self._loaded = True
         logger.info("Medical Model loaded and ready.")
 
-    def _build_messages(self, prompt: str) -> list:
-        """Build system + user messages for the chat template."""
+    def _build_messages(self, prompt) -> list:
+        """Build system + user messages for the chat template.
+
+        Args:
+            prompt: str (plain text) or list of message dicts [{role, content}, ...]
+        """
+        if isinstance(prompt, list):
+            return prompt  # Already in message format (from smolagents)
         return [
             {
                 "role": "system",
@@ -280,12 +286,16 @@ class MedicalModelTool:
             {"role": "user", "content": prompt},
         ]
 
-    def generate(self, prompt: str, max_new_tokens: Optional[int] = None, **kwargs) -> str:
+    def __call__(self, messages, **kwargs):
+        """smolagents Model interface — accepts message list, returns string."""
+        return self.generate(messages, **kwargs)
+
+    def generate(self, prompt, max_new_tokens: Optional[int] = None, **kwargs) -> str:
         """
         Generate a medical response for the given prompt.
 
         Args:
-            prompt: Medical question or clinical scenario
+            prompt: str (plain text) or list of message dicts [{role, content}, ...]
             max_new_tokens: Override default max tokens
 
         Returns:
