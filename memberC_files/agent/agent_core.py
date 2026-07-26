@@ -312,16 +312,26 @@ class HybridAgentPipeline:
             def execute_medical_knowledge_retrieval(query: str) -> str:
                 """Search medical knowledge base for evidence-based information about cardiology,
                 ECG interpretation, clinical guidelines, and related topics.
-                Args: query — the medical question or topic to search for.
-                Returns retrieved medical documents with relevance scores."""
+
+                Args:
+                    query: The medical question or topic to search for.
+
+                Returns:
+                    Retrieved medical documents with relevance scores.
+                """
                 return self._rag_tool.forward(query)
 
             @tool
             def invoke_diagnostic_reasoning(prompt: str) -> str:
                 """Invoke the fine-tuned medical LLM for diagnostic reasoning, clinical analysis,
                 and structured medical response generation.
-                Args: prompt — the medical question or clinical scenario to analyze.
-                Returns the model's medical analysis and response."""
+
+                Args:
+                    prompt: The medical question or clinical scenario to analyze.
+
+                Returns:
+                    The model's medical analysis and response.
+                """
                 return self._model_tool.forward(prompt)
 
             self._agent = CodeAgent(
