@@ -155,9 +155,10 @@ class MedicalRAGTool:
         )
         return results
 
-    def forward(self, query: str) -> str:
+    def forward(self, query: str, **kwargs) -> str:
         """
         smolagents-compatible forward method.
+        Accepts and ignores extra kwargs from smolagents.
 
         Returns retrieved documents formatted as a single context string.
         """
@@ -279,7 +280,7 @@ class MedicalModelTool:
             {"role": "user", "content": prompt},
         ]
 
-    def generate(self, prompt: str, max_new_tokens: Optional[int] = None) -> str:
+    def generate(self, prompt: str, max_new_tokens: Optional[int] = None, **kwargs) -> str:
         """
         Generate a medical response for the given prompt.
 
@@ -316,9 +317,10 @@ class MedicalModelTool:
         response = self._tokenizer.decode(generated_ids, skip_special_tokens=True)
         return response.strip()
 
-    def forward(self, prompt: str) -> str:
+    def forward(self, prompt: str, **kwargs) -> str:
         """
-        smolagents-compatible forward method.
+        smolagents-compatible forward method. Accepts and ignores extra kwargs
+        (e.g. stop_sequences) from smolagents CodeAgent.
         """
         return self.generate(prompt)
 
