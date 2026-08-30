@@ -1,4 +1,4 @@
 Pipeline,Faithfulness_Mean,Faithfulness_Min,Faithfulness_Max,Answer_Relevancy_Mean,Answer_Relevancy_Min,Answer_Relevancy_Max,Avg_Time_Seconds
-Pure RAG (7B + Retrieval),0.5954,0.4696,0.6947,0.8744,0.7,1.0,0.5
-Pure SFT (Fine-tuned 1.5B),0.8673,0.6968,1.0,0.8602,0.7,0.9667,0.15
-Hybrid Agent (1.5B + RAG),0.6179,0.4909,0.7119,0.8364,0.6706,1.0,0.8
+Pure RAG (7B + Retrieval),0.5888,0.4435,0.6947,0.8914,0.7,1.0,0.5
+Pure SFT (Fine-tuned 1.5B),0.8644,0.68,1.0,0.8812,0.7,1.0,0.15
+Hybrid Agent (1.5B + RAG),0.612,0.4533,0.7154,0.8422,0.5727,1.0,0.8
